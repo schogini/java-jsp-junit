@@ -8,11 +8,8 @@ docker container rm -f tmp-web >> log.txt 2>&1
 
 docker run --rm -d --name tmp-web --net tmp-net -e WEB=$1 $2 >> log.txt 2>&1
 
-# docker ps
+docker ps
 sleep 20
-
-
-
 
 
 # [ $# -ne 3 ] && echo 'NEED REPO, TEST SITE URL AND RESULTS' && exit 127 
@@ -29,7 +26,11 @@ export CLASSPATH=".:/var/jar_repo/htmlunit-driver-2.42.0-jar-with-dependencies.j
 sed -i "s/TEST_URL/http:\/\/tmp-web:8080\/sample\//" SelTest.java
 sed -i "s/TEST_RESULT/App Version: $1/" SelTest.java
 
+cat SelTest.java 
+
 javac SelTest.java
+
+java SelTest
 
 output=`java SelTest | grep -c SUCCESS`
 
