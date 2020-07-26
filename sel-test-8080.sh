@@ -3,13 +3,13 @@
 
 # LAUNCH A TOMCAT INSTANCE FOR TETING
 
-docker network create tmp-net > log.txt 2>&1
-docker container rm -f tmp-web >> log.txt 2>&1
+# docker network create tmp-net > log.txt 2>&1
+# docker container rm -f tmp-web >> log.txt 2>&1
 
-docker run --rm -d --name tmp-web --net tmp-net -e WEB=$1 $2 >> log.txt 2>&1
+# docker run --rm -d --name tmp-web --net tmp-net -e WEB=$1 $2 >> log.txt 2>&1
 
-docker ps
-sleep 20
+# docker ps
+# sleep 20
 
 
 # [ $# -ne 3 ] && echo 'NEED REPO, TEST SITE URL AND RESULTS' && exit 127 
@@ -35,7 +35,7 @@ java SelTest
 output=`java SelTest | grep -c SUCCESS`
 
 # CLEAR
-docker container rm -f tmp-web >> log.txt 2>&1
+# docker container rm -f tmp-web >> log.txt 2>&1
 
 if [ $output -gt 0 ] 
 then
