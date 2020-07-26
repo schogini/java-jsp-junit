@@ -1,6 +1,6 @@
 #!/bin/sh
 
-qq=$(docker service ls|grep -c tmp-svc)
+qq=$(docker service ls|grep "8080->8080"|grep -c tmp-svc)
 
 if [ $qq -gt 0 ]; then
 	echo "Doing a Rolling Update.. $1 "
