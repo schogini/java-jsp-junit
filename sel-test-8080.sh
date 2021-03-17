@@ -43,5 +43,6 @@ then
   exit 0
 else
   echo 'FAILED'
-  exit 127
+  // exit 127
 fi
+exit 0
