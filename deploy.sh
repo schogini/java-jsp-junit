@@ -1,13 +1,15 @@
 #!/bin/sh
 # IMAGE BUILD_ID PORT SERVICE_NAME
 
-qq=$(docker service ls|grep -c tmp-svc)
 
 service_name=tmp-svc
 [ $# -gt 3 ] && service_name=$4 
 
 port=8080
 [ $# -gt 2 ] && port=$3 
+
+
+qq=$(docker service ls|grep -c $service_name)
 
 if [ $qq -gt 0 ]; then
 	echo "Doing a Rolling Update.. $1 "
